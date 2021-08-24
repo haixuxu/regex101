@@ -22,11 +22,21 @@ const instance = axios.create({ baseURL: domain, httpsAgent, headers: { 'User-Ag
 
 const assetsCache = [];
 
+function parseSw(content) {
+  const matchs = content.match(/url:"\/.*?",/g);
+  return matchs.map((temp) => temp.replace(/(url:"|",)/g, ''));
+}
+
+function parseIndex(content) {
+  const matchs = content.match(/\/static\/.*?(?=")/g);
+  return matchs;
+}
+
 async function spySw() {
   try {
     const resp = await instance.get('/sw.js');
     await saveAssets('/sw.js', resp.data);
-    const assets = parse.parseSw(resp.data);
+    const assets = parseSw(resp.data);
     assetsCache.push(...assets);
   } catch (error) {
     console.log(error);
@@ -37,7 +47,7 @@ async function spyIndex() {
   try {
     const resp = await instance.get('/index.html');
     await saveAssets('/index.html', resp.data);
-    const assets = parse.parseIndex(resp.data);
+    const assets = parseIndex(resp.data);
     assetsCache.push(...assets);
   } catch (error) {
     console.log(error);
