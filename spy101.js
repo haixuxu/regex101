@@ -5,20 +5,19 @@ const fs = require('fs');
 const stream = require('stream');
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
-const parse = require('./parse');
 const finished = promisify(stream.finished);
 const writeFile = promisify(fs.writeFile);
-const SocksProxyAgent = require('socks-proxy-agent');
+// const SocksProxyAgent = require('socks-proxy-agent');
 // the full socks5 address
-const proxyOptions = `socks5://127.0.0.1:1080`;
+// const proxyOptions = `socks5://127.0.0.1:1080`;
 // create the socksAgent for axios
-const httpsAgent = new SocksProxyAgent(proxyOptions);
+// const httpsAgent = new SocksProxyAgent(proxyOptions);
 
 const saveDir = path.resolve(__dirname, 'app');
 const userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36';
 const domain = 'https://regex101.com';
 
-const instance = axios.create({ baseURL: domain, httpsAgent, headers: { 'User-Agent': userAgent } });
+const instance = axios.create({ baseURL: domain, headers: { 'User-Agent': userAgent } });
 
 const assetsCache = [];
 
