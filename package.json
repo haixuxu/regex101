@@ -1,0 +1,26 @@
+{
+  "name": "regex101",
+  "version": "1.0.0",
+  "description": "",
+  "main": "spy101.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuxihai123/regex101.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuxihai123/regex101/issues"
+  },
+  "homepage": "https://github.com/xuxihai123/regex101#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2",
+    "socks-proxy-agent": "^6.0.0"
+  }
+}
